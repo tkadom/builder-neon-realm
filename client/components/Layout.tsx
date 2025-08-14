@@ -22,6 +22,8 @@ const mainTabs = [
 ];
 
 export function Layout({ children }: LayoutProps) {
+  const location = useLocation();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top Navigation */}
