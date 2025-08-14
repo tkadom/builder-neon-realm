@@ -74,18 +74,22 @@ export function Layout({ children }: LayoutProps) {
       <div className="bg-white border-b">
         <div className="px-6">
           <nav className="flex space-x-8">
-            {mainTabs.map((tab) => (
-              <button
-                key={tab.id}
-                className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
-                  tab.active
-                    ? 'border-brand-500 text-brand-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+            {mainTabs.map((tab) => {
+              const isActive = location.pathname === tab.href;
+              return (
+                <Link
+                  key={tab.id}
+                  to={tab.href}
+                  className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
+                    isActive
+                      ? 'border-brand-500 text-brand-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  }`}
+                >
+                  {tab.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       </div>
