@@ -16,9 +16,9 @@ const workflowSteps = [
 ];
 
 const mainTabs = [
-  { id: 'agency-plan', label: 'Agency Plan', active: true },
-  { id: 'op-plan', label: 'Op. Plan', active: false },
-  { id: 'discounts', label: 'Discounts', active: false },
+  { id: 'agency-plan', label: 'Agency Plan', href: '/' },
+  { id: 'op-plan', label: 'Op. Plan', href: '/op-plan' },
+  { id: 'discounts', label: 'Discounts', href: '/discounts' },
 ];
 
 export function Layout({ children }: LayoutProps) {
