@@ -19,7 +19,61 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route
+            path="/op-plan"
+            element={
+              <PlaceholderPage
+                title="Operational Plan"
+                description="Configure and manage operational planning workflows"
+              />
+            }
+          />
+          <Route
+            path="/discounts"
+            element={
+              <PlaceholderPage
+                title="Discounts Management"
+                description="Set up customer discounts and pricing strategies"
+              />
+            }
+          />
+          <Route
+            path="/invoice"
+            element={
+              <PlaceholderPage
+                title="Invoicing"
+                description="Generate and manage customer invoices"
+              />
+            }
+          />
+          <Route
+            path="/pay"
+            element={
+              <PlaceholderPage
+                title="Payment Processing"
+                description="Track payments and financial transactions"
+              />
+            }
+          />
+          <Route
+            path="/deliver"
+            element={
+              <PlaceholderPage
+                title="Delivery Management"
+                description="Coordinate product delivery and logistics"
+              />
+            }
+          />
+          <Route
+            path="/settle"
+            element={
+              <PlaceholderPage
+                title="Settlement"
+                description="Complete order settlements and reconciliation"
+              />
+            }
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
