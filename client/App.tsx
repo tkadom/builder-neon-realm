@@ -57,15 +57,7 @@ const App = () => (
               />
             }
           />
-          <Route
-            path="/deliver"
-            element={
-              <PlaceholderPage
-                title="Delivery Management"
-                description="Coordinate product delivery and logistics"
-              />
-            }
-          />
+          <Route path="/deliver" element={<DeliveryPage />} />
           <Route
             path="/settle"
             element={
