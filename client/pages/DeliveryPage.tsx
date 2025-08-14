@@ -135,7 +135,7 @@ const deliveryOrders: DeliveryOrder[] = [
     orderNumber: 'ORD-2024-005',
     products: [
       { name: 'Corn Seed Standard', quantity: 1180, unit: 'bags' },
-      { name: 'Soybean Standard', qty: 670, unit: 'bags' }
+      { name: 'Soybean Standard', quantity: 670, unit: 'bags' }
     ],
     status: 'in_transit',
     scheduledDate: '2024-03-17',
