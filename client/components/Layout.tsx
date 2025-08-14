@@ -100,40 +100,47 @@ export function Layout({ children }: LayoutProps) {
           <div className="p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Workflow</h2>
             <nav className="space-y-2">
-              {workflowSteps.map((step, index) => (
-                <div key={step.id} className="relative">
-                  <button
-                    className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${
-                      step.active
-                        ? 'bg-brand-50 text-brand-700 border border-brand-200'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium ${
-                          step.active
-                            ? 'bg-brand-500 text-white'
-                            : index < workflowSteps.findIndex(s => s.active)
-                            ? 'bg-green-500 text-white'
-                            : 'bg-gray-200 text-gray-600'
-                        }`}
-                      >
-                        {index < workflowSteps.findIndex(s => s.active) ? '✓' : index + 1}
+              {workflowSteps.map((step, index) => {
+                const isActive = location.pathname === step.href;
+                const currentStepIndex = workflowSteps.findIndex(s => location.pathname === s.href);
+                const isCompleted = index < currentStepIndex;
+
+                return (
+                  <div key={step.id} className="relative">
+                    <Link
+                      to={step.href}
+                      className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${
+                        isActive
+                          ? 'bg-brand-50 text-brand-700 border border-brand-200'
+                          : 'text-gray-600 hover:bg-gray-50'
+                      }`}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div
+                          className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium ${
+                            isActive
+                              ? 'bg-brand-500 text-white'
+                              : isCompleted
+                              ? 'bg-green-500 text-white'
+                              : 'bg-gray-200 text-gray-600'
+                          }`}
+                        >
+                          {isCompleted ? '✓' : index + 1}
+                        </div>
+                        <span className="font-medium">{step.label}</span>
                       </div>
-                      <span className="font-medium">{step.label}</span>
-                    </div>
-                    {step.hasAlert && (
-                      <Badge variant="destructive" className="text-xs">
-                        Action Required
-                      </Badge>
+                      {step.hasAlert && (
+                        <Badge variant="destructive" className="text-xs">
+                          Action Required
+                        </Badge>
+                      )}
+                    </Link>
+                    {index < workflowSteps.length - 1 && (
+                      <div className="absolute left-6 top-12 w-0.5 h-4 bg-gray-200"></div>
                     )}
-                  </button>
-                  {index < workflowSteps.length - 1 && (
-                    <div className="absolute left-6 top-12 w-0.5 h-4 bg-gray-200"></div>
-                  )}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </nav>
           </div>
         </aside>
