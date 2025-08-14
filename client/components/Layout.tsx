@@ -8,11 +8,11 @@ interface LayoutProps {
 }
 
 const workflowSteps = [
-  { id: 'plan', label: 'Plan', active: true },
-  { id: 'invoice', label: 'Invoice', active: false },
-  { id: 'pay', label: 'Pay', active: false, hasAlert: true },
-  { id: 'deliver', label: 'Deliver', active: false },
-  { id: 'settle', label: 'Settle', active: false },
+  { id: 'plan', label: 'Plan', href: '/' },
+  { id: 'invoice', label: 'Invoice', href: '/invoice' },
+  { id: 'pay', label: 'Pay', href: '/pay', hasAlert: true },
+  { id: 'deliver', label: 'Deliver', href: '/deliver' },
+  { id: 'settle', label: 'Settle', href: '/settle' },
 ];
 
 const mainTabs = [
