@@ -1,14 +1,23 @@
-import { Layout } from '../components/Layout';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Button } from '../components/ui/button';
-import { Construction } from 'lucide-react';
+import { Layout } from "../components/Layout";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Construction } from "lucide-react";
 
 interface PlaceholderPageProps {
   title: string;
   description: string;
 }
 
-export default function PlaceholderPage({ title, description }: PlaceholderPageProps) {
+export default function PlaceholderPage({
+  title,
+  description,
+}: PlaceholderPageProps) {
   return (
     <Layout>
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -22,7 +31,8 @@ export default function PlaceholderPage({ title, description }: PlaceholderPageP
           </CardHeader>
           <CardContent className="text-center">
             <p className="text-sm text-gray-600 mb-4">
-              This page is ready to be customized with your specific requirements.
+              This page is ready to be customized with your specific
+              requirements.
             </p>
             <Button variant="outline" className="w-full">
               Continue Building This Feature

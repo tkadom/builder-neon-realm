@@ -1,24 +1,30 @@
-import { ReactNode } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Badge } from './ui/badge';
+import { ReactNode } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { Badge } from "./ui/badge";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const workflowSteps = [
-  { id: 'plan', label: 'Plan', href: '/' },
-  { id: 'invoice', label: 'Invoice', href: '/invoice' },
-  { id: 'pay', label: 'Pay', href: '/pay', hasAlert: true },
-  { id: 'deliver', label: 'Deliver', href: '/deliver' },
-  { id: 'settle', label: 'Settle', href: '/settle' },
+  { id: "plan", label: "Plan", href: "/" },
+  { id: "invoice", label: "Invoice", href: "/invoice" },
+  { id: "pay", label: "Pay", href: "/pay", hasAlert: true },
+  { id: "deliver", label: "Deliver", href: "/deliver" },
+  { id: "settle", label: "Settle", href: "/settle" },
 ];
 
 const mainTabs = [
-  { id: 'agency-plan', label: 'Agency Plan', href: '/' },
-  { id: 'op-plan', label: 'Op. Plan', href: '/op-plan' },
-  { id: 'discounts', label: 'Discounts', href: '/discounts' },
+  { id: "agency-plan", label: "Agency Plan", href: "/" },
+  { id: "op-plan", label: "Op. Plan", href: "/op-plan" },
+  { id: "discounts", label: "Discounts", href: "/discounts" },
 ];
 
 export function Layout({ children }: LayoutProps) {
@@ -33,7 +39,9 @@ export function Layout({ children }: LayoutProps) {
             <h1 className="text-xl font-semibold text-brand-700">SeedFlow</h1>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-medium text-gray-700">Sales Year:</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Sales Year:
+                </span>
                 <Select defaultValue="2024">
                   <SelectTrigger className="w-24">
                     <SelectValue />
@@ -46,16 +54,22 @@ export function Layout({ children }: LayoutProps) {
                 </Select>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-medium text-gray-700">Agency:</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Agency:
+                </span>
                 <Select defaultValue="midwest">
                   <SelectTrigger className="w-40">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="midwest">Midwest Seeds Co.</SelectItem>
-                    <SelectItem value="northeast">Northeast Agricultural</SelectItem>
+                    <SelectItem value="northeast">
+                      Northeast Agricultural
+                    </SelectItem>
                     <SelectItem value="southwest">Southwest Growers</SelectItem>
-                    <SelectItem value="pacific">Pacific Seed Solutions</SelectItem>
+                    <SelectItem value="pacific">
+                      Pacific Seed Solutions
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -82,8 +96,8 @@ export function Layout({ children }: LayoutProps) {
                   to={tab.href}
                   className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
                     isActive
-                      ? 'border-brand-500 text-brand-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? "border-brand-500 text-brand-600"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                   }`}
                 >
                   {tab.label}
@@ -98,11 +112,15 @@ export function Layout({ children }: LayoutProps) {
         {/* Left Sidebar */}
         <aside className="w-64 bg-white shadow-sm min-h-screen">
           <div className="p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Workflow</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Workflow
+            </h2>
             <nav className="space-y-2">
               {workflowSteps.map((step, index) => {
                 const isActive = location.pathname === step.href;
-                const currentStepIndex = workflowSteps.findIndex(s => location.pathname === s.href);
+                const currentStepIndex = workflowSteps.findIndex(
+                  (s) => location.pathname === s.href,
+                );
                 const isCompleted = index < currentStepIndex;
 
                 return (
@@ -111,21 +129,21 @@ export function Layout({ children }: LayoutProps) {
                       to={step.href}
                       className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${
                         isActive
-                          ? 'bg-brand-50 text-brand-700 border border-brand-200'
-                          : 'text-gray-600 hover:bg-gray-50'
+                          ? "bg-brand-50 text-brand-700 border border-brand-200"
+                          : "text-gray-600 hover:bg-gray-50"
                       }`}
                     >
                       <div className="flex items-center space-x-3">
                         <div
                           className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium ${
                             isActive
-                              ? 'bg-brand-500 text-white'
+                              ? "bg-brand-500 text-white"
                               : isCompleted
-                              ? 'bg-green-500 text-white'
-                              : 'bg-gray-200 text-gray-600'
+                                ? "bg-green-500 text-white"
+                                : "bg-gray-200 text-gray-600"
                           }`}
                         >
-                          {isCompleted ? '✓' : index + 1}
+                          {isCompleted ? "✓" : index + 1}
                         </div>
                         <span className="font-medium">{step.label}</span>
                       </div>
@@ -146,9 +164,7 @@ export function Layout({ children }: LayoutProps) {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
-          {children}
-        </main>
+        <main className="flex-1 p-6">{children}</main>
       </div>
     </div>
   );
